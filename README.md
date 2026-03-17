@@ -1,40 +1,68 @@
-This is a Kotlin Multiplatform project targeting Android, Desktop (JVM).
+## UI 목록
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+- [x] 태스크 생성 다이얼로그
+- [x] 타이틀 로우
+    - 새 테스크 생성
+    - 닫기 아이콘
+- [x] 구분선
 
-### Build and Run Android Application
+- [x] 공통 텍스트 인풋 칼럼
+    - 제목 칼럼
+        - 헤더
+        - 제목 텍스트필드
+    - 설명 칼럼
+        - 헤더
+        - 설명 텍스트필드
+    - 태그 칼럼
+        - 헤더
+        - 설명 텍스트필드
+        - 힌트 텍스트
+- [x] 공통 버튼 칼럼
+    - 상태 칼럼
+        - 헤더
+        - 버튼 로우
+            - To Do
+            - In Progress
+            - Done
+    - 담당자 칼럼
+        - 헤더
+        - 버튼 로우
+            - 버튼 객체(박스, 이미지, 텍스트)
+                - 다이노
+                - 페임스
+- [x] 구분선
+- [x] 취소, 생성 로우
+    - 버튼 리스트
+        - 취소
+        - 생성
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+## 기능 목록
 
-### Build and Run Desktop (JVM) Application
+- [x] 제목 검증
+    - 공백 검사
+    - 에러 표시(보더, 에러 힌트 텍스트)
+- [x] 태그 검증
+    - 5글자 제한
+    - 5개 제한
+    - 에러 표시(보더, 에러 힌트 텍스트)
+- [x] 상태 버튼 상호작용
+    - 기본값 맨 앞 버튼
+    - 선택 가능하게
+    - 선택 효과
+- [x] 담당자 버튼 상호작용
+    - 기본값 맨 앞 버튼
+    - 선택 가능하게
+    - 선택 효과
+- [x] 생성 버튼 상호작용
+    - 생성
+        - 눌렀을 때 유효성 검사
+    - 비활성화 효과
 
-To build and run the development version of the desktop app, use the run configuration from the run widget
-in your IDE’s toolbar or run it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:run
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:run
-  ```
+## UI 테스트
 
----
+- [x] 상태 버튼을 클릭 했을 때 다른 상태 버튼은 선택되지 않아야 한다.
+- [x] 담당자 버튼을 클릭 했을 때 다른 상태 버튼은 선택되지 않아야 한다.
+- [x] 제목 검증 혹은 태그 검증에 실패시 생성 버튼 비활성화
+- [x] 텍스트 필드에 입력한 내용이 입력한대로 출력되어야 한다.
+- [x] 제목 검증 혹은 태그 검증에 실패시 생성 버튼을 누르면 제목과 태그에서 에러 표시가 출력되야 한다.
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…

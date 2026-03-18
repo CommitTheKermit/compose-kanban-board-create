@@ -1,13 +1,11 @@
 package woowacourse.kanban.create.model
 
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 
-@Stable
 class TaskCreateState {
     var titleInputValue by mutableStateOf("")
     var contentInputValue by mutableStateOf("")

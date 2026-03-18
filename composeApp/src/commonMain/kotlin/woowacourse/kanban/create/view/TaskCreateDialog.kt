@@ -75,12 +75,13 @@ fun TaskCreateDialog(
             )
             RadioSelector(
                 header = "상태 *",
-                items = viewModel.statuses,
+                items = TaskStatus.entries.map { it.statusDescription },
             ) { index ->
                 StatusButton(
                     status = viewModel.statuses[index],
                     isSelected = viewModel.selectedStatusIndex == index,
                     onClick = { viewModel.onStatusSelect(index) },
+                    status = TaskStatus.entries[index],
                     index = index,
                 )
             }

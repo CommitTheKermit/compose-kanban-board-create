@@ -21,10 +21,11 @@ import woowacourse.kanban.PRIMARY_SUB_TEXT
 import woowacourse.kanban.STATUS_BG_SELECTED
 import woowacourse.kanban.STATUS_BORDER_SELECTED
 import woowacourse.kanban.STATUS_TEXT_SELECTED
+import woowacourse.kanban.create.model.TaskStatus
 
 @Composable
 fun StatusButton(
-    status: String,
+    status: TaskStatus,
     onClick: () -> Unit,
     index: Int,
     modifier: Modifier = Modifier,
@@ -57,7 +58,7 @@ fun StatusButton(
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            status,
+            status.statusDescription,
             fontWeight = FontWeight.W500,
             fontSize = 16.sp,
             modifier = Modifier.padding(vertical = 14.dp),

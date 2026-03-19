@@ -12,7 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,7 +28,6 @@ import woowacourse.kanban.create.model.TaskStatus
 fun StatusButton(
     status: TaskStatus,
     onClick: () -> Unit,
-    index: Int,
     modifier: Modifier = Modifier,
     isSelected: Boolean = false,
 ) {
@@ -52,9 +52,9 @@ fun StatusButton(
                     ),
             ).clickable(
                 onClick = onClick,
-            ).testTag(
-                tag = if (isSelected) "selected$index" else "unselected$index",
-            ),
+            ).semantics {
+                selected = isSelected
+            },
         contentAlignment = Alignment.Center,
     ) {
         Text(

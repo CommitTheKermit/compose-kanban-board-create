@@ -89,7 +89,6 @@ fun TaskCreateDialog(
                     status = TaskStatus.entries[index],
                     isSelected = state.selectedStatusIndex == index,
                     onClick = { action.onStatusSelect(index) },
-                    index = index,
                 )
             }
             RadioSelector(
@@ -100,7 +99,6 @@ fun TaskCreateDialog(
                     name = assignees[index],
                     isSelected = state.selectedCoachIndex == index,
                     onClick = { action.onCoachSelect(index) },
-                    index = index,
                 )
             }
             HorizontalDivider()

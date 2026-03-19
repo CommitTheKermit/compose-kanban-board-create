@@ -18,7 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,7 +34,6 @@ fun CoachButton(
     isSelected: Boolean,
     name: String,
     onClick: () -> Unit,
-    index: Int,
     modifier: Modifier = Modifier,
 ) {
     val shape = RoundedCornerShape(10.dp)
@@ -57,9 +57,9 @@ fun CoachButton(
             .clickable(
                 onClick = onClick,
             )
-            .testTag(
-                tag = if (isSelected) "selected$index" else "unselected$index",
-            ),
+            .semantics {
+                selected = isSelected
+            },
 
     ) {
         Row(

@@ -4,7 +4,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsNotEnabled
-import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.assertIsNotSelected
+import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
@@ -34,7 +35,6 @@ class DialogTest {
                     status = TaskStatus.entries[index],
                     isSelected = selectedStatusIndex.value == index,
                     onClick = { selectedStatusIndex.value = index },
-                    index = index,
                 )
             }
         }
@@ -43,9 +43,9 @@ class DialogTest {
         onNodeWithText("In Progress").performClick()
         waitForIdle()
         // then
-        onNodeWithTag("selected1").assertExists()
-        onNodeWithTag("unselected0").assertExists()
-        onNodeWithTag("unselected2").assertExists()
+        onNodeWithText("In Progress").assertIsSelected()
+        onNodeWithText("TODO").assertIsNotSelected()
+        onNodeWithText("Done").assertIsNotSelected()
     }
 
     @Test
@@ -66,19 +66,18 @@ class DialogTest {
                     name = names[index],
                     isSelected = selectedCoachIndex.value == index,
                     onClick = { selectedCoachIndex.value = index },
-                    index = index,
                 )
             }
         }
 
-        onNodeWithTag("selected0").assertExists()
-        onNodeWithTag("unselected1").assertExists()
+        onNodeWithText("다이노").assertIsSelected()
+        onNodeWithText("페임스").assertIsNotSelected()
         // when
         onNodeWithText("페임스").performClick()
         waitForIdle()
         // then
-        onNodeWithTag("selected1").assertExists()
-        onNodeWithTag("unselected0").assertExists()
+        onNodeWithText("페임스").assertIsSelected()
+        onNodeWithText("다이노").assertIsNotSelected()
     }
 
     @Test

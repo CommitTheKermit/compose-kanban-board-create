@@ -1,4 +1,4 @@
-package woowacourse.kanban.board.component
+package woowacourse.kanban.card.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Text
@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
-import woowacourse.kanban.board.model.Title
+import woowacourse.kanban.card.model.Title
 
 @Composable
 fun CardTitle(

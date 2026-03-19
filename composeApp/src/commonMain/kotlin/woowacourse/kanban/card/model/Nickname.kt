@@ -1,6 +1,6 @@
-package woowacourse.kanban.board.model
+package woowacourse.kanban.card.model
 
-import woowacourse.kanban.board.constant.ERROR_TAG
+import woowacourse.kanban.card.constant.ERROR_TAG
 
 @JvmInline
 value class Nickname(val nickname: String) {

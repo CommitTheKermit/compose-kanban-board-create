@@ -1,4 +1,4 @@
-package woowacourse.kanban.board.study
+package woowacourse.kanban.card.study
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

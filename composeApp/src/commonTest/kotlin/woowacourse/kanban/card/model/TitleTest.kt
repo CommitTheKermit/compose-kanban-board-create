@@ -1,4 +1,4 @@
-package woowacourse.kanban.board.model
+package woowacourse.kanban.card.model
 
 import androidx.compose.ui.test.ExperimentalTestApi
 import kotlin.test.assertEquals

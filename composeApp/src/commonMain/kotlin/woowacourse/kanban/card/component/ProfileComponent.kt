@@ -1,4 +1,4 @@
-package woowacourse.kanban.board.component
+package woowacourse.kanban.card.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import woowacourse.kanban.PROFILE_BG_COLOR
 import woowacourse.kanban.PROFILE_COLOR
-import woowacourse.kanban.board.model.Nickname
+import woowacourse.kanban.card.model.Nickname
 
 @Composable
 fun Profile(

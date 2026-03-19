@@ -1,4 +1,4 @@
-package woowacourse.kanban.board.component
+package woowacourse.kanban.card.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -16,16 +16,16 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import woowacourse.kanban.BORDER_COLOR
-import woowacourse.kanban.board.constant.DEFAULT_CONTENT
-import woowacourse.kanban.board.constant.DEFAULT_NAME
-import woowacourse.kanban.board.constant.DEFAULT_TITLE
-import woowacourse.kanban.board.constant.MAX_CONTENT
-import woowacourse.kanban.board.constant.MAX_NAME
-import woowacourse.kanban.board.constant.MAX_TITLE
-import woowacourse.kanban.board.model.BoardData
-import woowacourse.kanban.board.model.Nickname
-import woowacourse.kanban.board.model.Tags
-import woowacourse.kanban.board.model.Title
+import woowacourse.kanban.card.constant.DEFAULT_CONTENT
+import woowacourse.kanban.card.constant.DEFAULT_NAME
+import woowacourse.kanban.card.constant.DEFAULT_TITLE
+import woowacourse.kanban.card.constant.MAX_CONTENT
+import woowacourse.kanban.card.constant.MAX_NAME
+import woowacourse.kanban.card.constant.MAX_TITLE
+import woowacourse.kanban.card.model.BoardData
+import woowacourse.kanban.card.model.Nickname
+import woowacourse.kanban.card.model.Tags
+import woowacourse.kanban.card.model.Title
 
 @Composable
 fun KanbanBoardTemplate(board: BoardData) {

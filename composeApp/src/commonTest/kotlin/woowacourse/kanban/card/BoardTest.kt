@@ -1,18 +1,18 @@
-package woowacourse.kanban.board
+package woowacourse.kanban.card
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.runComposeUiTest
 import kotlin.test.Test
-import woowacourse.kanban.board.component.KanbanBoardTemplate
-import woowacourse.kanban.board.constant.DEFAULT_CONTENT
-import woowacourse.kanban.board.constant.DEFAULT_NAME
-import woowacourse.kanban.board.constant.DEFAULT_TITLE
-import woowacourse.kanban.board.model.BoardData
-import woowacourse.kanban.board.model.Nickname
-import woowacourse.kanban.board.model.Tags
-import woowacourse.kanban.board.model.Title
+import woowacourse.kanban.card.component.KanbanBoardTemplate
+import woowacourse.kanban.card.constant.DEFAULT_CONTENT
+import woowacourse.kanban.card.constant.DEFAULT_NAME
+import woowacourse.kanban.card.constant.DEFAULT_TITLE
+import woowacourse.kanban.card.model.BoardData
+import woowacourse.kanban.card.model.Nickname
+import woowacourse.kanban.card.model.Tags
+import woowacourse.kanban.card.model.Title
 
 @OptIn(ExperimentalTestApi::class)
 class BoardTest {

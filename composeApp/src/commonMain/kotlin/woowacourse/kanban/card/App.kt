@@ -1,4 +1,4 @@
-package woowacourse.kanban.board
+package woowacourse.kanban.card
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

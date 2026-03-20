@@ -13,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import woowacourse.kanban.create.model.TaskCreateAction
 import woowacourse.kanban.create.model.TaskCreateState
 import woowacourse.kanban.create.model.TaskStatus
 import woowacourse.kanban.create.view.createTextInput.CreateTextInput
@@ -30,7 +29,6 @@ fun TaskCreateDialog(
     ),
 ) {
     val state = remember { TaskCreateState() }
-    val action = TaskCreateAction(state = state)
     Column(
         modifier = modifier.background(color = Color.White)
             .size(
@@ -56,7 +54,7 @@ fun TaskCreateDialog(
                 height = 48.dp,
                 value = state.titleInputValue,
                 onChangeValue = { newTextValue ->
-                    action.onTitleChange(newTextValue)
+                    state.onTitleChange(newTextValue)
                 },
                 isError = state.isTitleError,
             )
@@ -67,7 +65,7 @@ fun TaskCreateDialog(
                 height = 116.dp,
                 placeHolderAlignment = Alignment.TopStart,
                 value = state.contentInputValue,
-                onChangeValue = { newTextValue -> action.onContentChange(newTextValue) },
+                onChangeValue = { newTextValue -> state.onContentChange(newTextValue) },
             )
             CreateTextInput(
                 modifier = Modifier,
@@ -77,7 +75,7 @@ fun TaskCreateDialog(
                 hintText = "5자 이내의 태그를 최대 5개까지 등록할 수 있습니다.",
                 value = state.tagInputValue,
                 onChangeValue = { newTextValue ->
-                    action.onTagChange(newTextValue)
+                    state.onTagChange(newTextValue)
                 },
                 isError = state.isTagError,
             )
@@ -88,7 +86,7 @@ fun TaskCreateDialog(
                 StatusButton(
                     status = TaskStatus.entries[index],
                     isSelected = state.selectedStatusIndex == index,
-                    onClick = { action.onStatusSelect(index) },
+                    onClick = { state.onStatusSelect(index) },
                 )
             }
             RadioSelector(
@@ -98,13 +96,13 @@ fun TaskCreateDialog(
                 CoachButton(
                     name = assignees[index],
                     isSelected = state.selectedCoachIndex == index,
-                    onClick = { action.onCoachSelect(index) },
+                    onClick = { state.onCoachSelect(index) },
                 )
             }
             HorizontalDivider()
             FooterRow(
                 onCancel = { },
-                onCreate = { action.onCardCreate() },
+                onCreate = { state.onCardCreate() },
                 isCreateError = state.isCreateError,
             )
         }

@@ -8,13 +8,51 @@ import androidx.compose.runtime.setValue
 
 class TaskCreateState {
     var titleInputValue by mutableStateOf("")
+        private set
     var contentInputValue by mutableStateOf("")
+        private set
     var tagInputValue by mutableStateOf("")
+        private set
 
     var isTitleError by mutableStateOf(false)
+        private set
     var isTagError by mutableStateOf(false)
+        private set
     val isCreateError by derivedStateOf { isTitleError || isTagError }
 
     var selectedStatusIndex by mutableIntStateOf(0)
+        private set
     var selectedCoachIndex by mutableIntStateOf(0)
+        private set
+
+    fun onTitleChange(input: String) {
+        titleInputValue = input
+        if (isTitleError) isTitleError = false
+    }
+
+    fun onContentChange(input: String) {
+        contentInputValue = input
+    }
+
+    fun onTagChange(input: String) {
+        tagInputValue = input
+        if (isTagError) isTagError = false
+    }
+
+    fun onStatusSelect(index: Int) {
+        selectedStatusIndex = index
+    }
+
+    fun onCoachSelect(index: Int) {
+        selectedCoachIndex = index
+    }
+
+    fun onCardCreate() {
+        isTitleError = titleInputValue.isEmpty()
+        val tags = tagInputValue.split(",")
+        isTagError = tags.size > 5 || tags.any { it.length > 5 }
+
+        if (isTitleError) titleInputValue = ""
+        if (isTagError) tagInputValue = ""
+    }
 }

@@ -1,5 +1,7 @@
 package woowacourse.kanban.board.model
 
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import woowacourse.kanban.create.model.TaskStatus
 
@@ -8,8 +10,9 @@ class BoardState {
     val inProgressCardList: MutableList<KanbanTask> = mutableStateListOf()
     val doneCardList: MutableList<KanbanTask> = mutableStateListOf()
 
-    fun calculateProgress(tasks: List<KanbanTask>): Double {
-        return tasks.filter { it.status == TaskStatus.DONE }.size.toDouble() / tasks.size.toDouble()
+    val totalTaskCount by derivedStateOf { todoCardList.size + inProgressCardList.size + doneCardList.size }
+    val progress by derivedStateOf {
+        if (totalTaskCount == 0) 0.0 else doneCardList.size.toDouble() / totalTaskCount.toDouble()
     }
 
     fun addCard(task: KanbanTask) {

@@ -26,12 +26,12 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun KanbanBoardHeader(
+    progress: Double,
     doneTaskCount: Int,
     totalTaskCount: Int,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val progress: Double = if (totalTaskCount == 0) 0.0 else doneTaskCount.toDouble() / totalTaskCount.toDouble()
     Column(modifier = modifier.padding(horizontal = 24.dp, vertical = 16.dp)) {
         Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
             Column {
@@ -84,7 +84,7 @@ fun KanbanBoardHeader(
 @Composable
 fun KanbanBoardHeaderPreview() {
     KanbanBoardHeader(
-
+        progress = 3.0 / 7.0,
         doneTaskCount = 3,
         totalTaskCount = 7,
         onClick = { },

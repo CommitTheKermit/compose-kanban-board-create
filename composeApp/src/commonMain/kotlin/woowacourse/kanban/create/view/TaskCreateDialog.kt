@@ -89,7 +89,7 @@ fun TaskCreateDialog(
                 )
                 RadioSelector(
                     header = "상태 *",
-                    items = TaskStatus.entries.map { it.statusDescription },
+                    listSize = TaskStatus.entries.size,
                 ) { index ->
                     StatusButton(
                         status = TaskStatus.entries[index],
@@ -99,7 +99,7 @@ fun TaskCreateDialog(
                 }
                 RadioSelector(
                     header = "담당자 *",
-                    items = assignees,
+                    assignees.size,
                 ) { index ->
                     CoachButton(
                         name = assignees[index],

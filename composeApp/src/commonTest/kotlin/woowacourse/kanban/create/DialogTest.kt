@@ -17,7 +17,6 @@ import woowacourse.kanban.create.view.TaskCreateDialog
 import woowacourse.kanban.create.view.radioSelector.CoachButton
 import woowacourse.kanban.create.view.radioSelector.RadioSelector
 import woowacourse.kanban.create.view.radioSelector.StatusButton
-import woowacourse.kanban.create.view.radioSelector.displayName
 
 @OptIn(ExperimentalTestApi::class)
 class DialogTest {
@@ -32,7 +31,7 @@ class DialogTest {
         setContent {
             RadioSelector(
                 header = "상태 *",
-                TaskStatus.entries.map { it.displayName },
+                TaskStatus.entries.size,
             ) { index ->
                 StatusButton(
                     status = TaskStatus.entries[index],
@@ -63,7 +62,7 @@ class DialogTest {
         setContent {
             RadioSelector(
                 header = "담당자",
-                items = names,
+                listSize = names.size,
             ) { index ->
                 CoachButton(
                     name = names[index],

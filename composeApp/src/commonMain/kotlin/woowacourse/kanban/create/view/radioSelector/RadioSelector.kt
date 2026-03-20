@@ -13,7 +13,7 @@ import woowacourse.kanban.create.view.HeaderText
 @Composable
 fun RadioSelector(
     header: String,
-    items: List<String>,
+    listSize: Int,
     modifier: Modifier = Modifier,
     itemContent: @Composable (index: Int) -> Unit,
 ) {
@@ -26,7 +26,7 @@ fun RadioSelector(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             items(
-                items.size,
+                listSize,
             ) { index ->
                 itemContent(index)
             }

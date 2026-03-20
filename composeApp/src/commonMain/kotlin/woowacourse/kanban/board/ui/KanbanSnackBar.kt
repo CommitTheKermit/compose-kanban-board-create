@@ -29,7 +29,7 @@ fun KanbanSnackBar(
 ) {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier
+        modifier = modifier
             .clip(RoundedCornerShape(4.dp))
             .background(color = Color(0xff322f35)),
     ) {

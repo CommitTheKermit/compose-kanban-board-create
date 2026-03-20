@@ -1,6 +1,7 @@
 package woowacourse.kanban.board.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -45,13 +46,29 @@ val TaskStatus.bgColor: Color
         TaskStatus.DONE -> Color(0xFFf0fdf4)
     }
 
+val TaskStatus.borderColor: Color
+    get() = when (this) {
+        TaskStatus.TO_DO -> Color(0xffbedbff)
+        TaskStatus.IN_PROGRESS -> Color(0xfffee685)
+        TaskStatus.DONE -> Color(0xffb9f8cf)
+    }
+
 @Composable
 fun StatusCardList(
     tasks: List<KanbanTask>,
     status: TaskStatus,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier = modifier.clip(RoundedCornerShape(10.dp)).background(status.bgColor)) {
+    Column(
+        modifier = modifier
+            .clip(RoundedCornerShape(10.dp))
+            .background(status.bgColor)
+            .border(
+                color = status.borderColor,
+                width = 1.dp,
+                shape = RoundedCornerShape(10.dp),
+            ),
+    ) {
         Box(
             modifier = Modifier
                 .background(status.titleColor)
@@ -84,7 +101,12 @@ fun StatusCardList(
         }
         LazyColumn(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier
+                .padding(vertical = 12.dp)
+                .fillMaxHeight()
+                .fillMaxWidth(),
+
         ) {
             items(tasks.size) {
                 KanbanCard(tasks[it].data)

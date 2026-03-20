@@ -4,7 +4,6 @@ package woowacourse.kanban
 const val TAG_COLOR = 0xffF3F4F6
 const val PROFILE_BG_COLOR = 0xFF888888
 const val PROFILE_COLOR = 0xFFFFFFFF
-const val BORDER_COLOR = 0xffE5E7EB
 const val CONTENT_COLOR = 0xff4A5565
 
 // 보드에 사용된 색상
@@ -34,3 +33,25 @@ const val CLOSE_ICON_TINT = 0xFF6A7282
 const val COACH_BORDER_SELECTED = 0xFF615FFF
 const val COACH_BG_SELECTED = 0xFFEEF2FF
 const val COACH_ICON_TINT = 0xFF838383
+
+// 태스크 생성 페이지
+const val COMPLETE_PERCENT = 0xFF6A7282
+
+// 스낵바
+const val SNACK_BAR_BG = 0xFF322F35
+const val SNACK_BAR_FONT = 0xFFF5EEF7
+
+// 칸반 보드 리스트 - 타이틀 색상
+const val STATUS_BG_TO_DO = 0xFF155DFC
+const val STATUS_BG_IN_PROGRESS = 0xFFE17100
+const val STATUS_BG_DONE = 0xFF00A63E
+
+// 칸반 보드 리스트 - 배경 색상
+const val STATUS_LIST_BG_TO_DO = 0xFFEFF6FF
+const val STATUS_LIST_BG_IN_PROGRESS = 0xFFFFFBEB
+const val STATUS_LIST_BG_DONE = 0xFFF0FDF4
+
+// 칸반 보드 리스트 - 테두리 색상
+const val STATUS_LIST_BORDER_TO_DO = 0xFFBEDBFF
+const val STATUS_LIST_BORDER_IN_PROGRESS = 0xFFFEE685
+const val STATUS_LIST_BORDER_DONE = 0xFFB9F8CF

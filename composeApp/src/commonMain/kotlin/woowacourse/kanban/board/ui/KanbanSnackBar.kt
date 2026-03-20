@@ -21,6 +21,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import woowacourse.kanban.SNACK_BAR_BG
+import woowacourse.kanban.SNACK_BAR_FONT
 
 @Composable
 fun KanbanSnackBar(
@@ -31,7 +33,7 @@ fun KanbanSnackBar(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .clip(RoundedCornerShape(4.dp))
-            .background(color = Color(0xff322f35)),
+            .background(color = Color(SNACK_BAR_BG)),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -42,14 +44,14 @@ fun KanbanSnackBar(
         ) {
             Text(
                 text = "새로운 태스크가 추가되었습니다.",
-                color = Color(0xfff5eef7),
+                color = Color(SNACK_BAR_FONT),
                 fontWeight = FontWeight.W400,
                 fontSize = 14.sp,
             )
             Icon(
                 Icons.Default.Close,
                 contentDescription = "스낵바 닫기",
-                tint = Color(0xfff5eef7),
+                tint = Color(SNACK_BAR_FONT),
                 modifier = Modifier.clickable(
                     onClick = {
                         data.dismiss()

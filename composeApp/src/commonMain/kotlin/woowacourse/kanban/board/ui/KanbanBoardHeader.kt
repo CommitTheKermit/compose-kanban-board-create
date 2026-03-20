@@ -1,5 +1,6 @@
 package woowacourse.kanban.board.ui
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import woowacourse.kanban.CREATE_BG
+import woowacourse.kanban.PRIMARY_BORDER
 
 @Composable
 fun KanbanBoardHeader(
@@ -33,7 +36,11 @@ fun KanbanBoardHeader(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier = modifier.padding(horizontal = 24.dp, vertical = 16.dp)) {
+    Column(
+        modifier = modifier
+            .padding(horizontal = 24.dp, vertical = 16.dp)
+            .border(color = Color(PRIMARY_BORDER), width = 1.dp),
+    ) {
         Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
             Column {
                 Text(
@@ -45,7 +52,7 @@ fun KanbanBoardHeader(
                     "완료율 ${(progress * 100).toInt()}% ($doneTaskCount/$totalTaskCount)",
                     fontWeight = FontWeight.W400,
                     fontSize = 14.sp,
-                    color = Color(0xff6a7282),
+                    color = Color(PRIMARY_BORDER),
                 )
             }
             Button(
@@ -54,7 +61,7 @@ fun KanbanBoardHeader(
                 },
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonColors(
-                    containerColor = Color(0xff4f39f6),
+                    containerColor = Color(CREATE_BG),
                     contentColor = ButtonDefaults.buttonColors().contentColor,
                     disabledContainerColor = ButtonDefaults.buttonColors().disabledContainerColor,
                     disabledContentColor = ButtonDefaults.buttonColors().disabledContentColor,
@@ -74,8 +81,8 @@ fun KanbanBoardHeader(
         LinearProgressIndicator(
             progress = { progress.toFloat() },
             modifier = Modifier.fillMaxWidth().height(8.dp),
-            color = Color(0xff4f39f6),
-            trackColor = Color(0xffe5e7eb),
+            color = Color(CREATE_BG),
+            trackColor = Color(PRIMARY_BORDER),
             drawStopIndicator = {},
         )
     }

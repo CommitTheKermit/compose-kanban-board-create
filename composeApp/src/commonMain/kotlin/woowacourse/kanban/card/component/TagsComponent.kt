@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import woowacourse.kanban.TAG_COLOR
-import woowacourse.kanban.card.model.Tags
+import woowacourse.kanban.model.Tags
 
 @Composable
 fun TagsComponent(

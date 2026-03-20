@@ -3,7 +3,8 @@ package woowacourse.kanban.board.model
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
-import woowacourse.kanban.create.model.TaskStatus
+import woowacourse.kanban.model.KanbanTask
+import woowacourse.kanban.model.TaskStatus
 
 class BoardState {
     val todoCardList: MutableList<KanbanTask> = mutableStateListOf()

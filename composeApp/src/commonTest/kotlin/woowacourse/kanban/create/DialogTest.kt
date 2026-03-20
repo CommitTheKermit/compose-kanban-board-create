@@ -12,11 +12,11 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.runComposeUiTest
 import kotlin.test.Test
-import woowacourse.kanban.create.model.TaskStatus
 import woowacourse.kanban.create.view.TaskCreateDialog
 import woowacourse.kanban.create.view.radioSelector.CoachButton
 import woowacourse.kanban.create.view.radioSelector.RadioSelector
 import woowacourse.kanban.create.view.radioSelector.StatusButton
+import woowacourse.kanban.model.TaskStatus
 
 @OptIn(ExperimentalTestApi::class)
 class DialogTest {

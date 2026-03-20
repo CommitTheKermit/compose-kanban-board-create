@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
-import woowacourse.kanban.card.model.Title
+import woowacourse.kanban.model.Title
 
 @Composable
 fun CardTitle(

@@ -1,4 +1,4 @@
-package woowacourse.kanban.card.model
+package woowacourse.kanban.model
 
 class Tags(val tags: List<String> = listOf()) {
     init {

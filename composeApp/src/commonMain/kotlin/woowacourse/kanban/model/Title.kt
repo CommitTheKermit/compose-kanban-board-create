@@ -1,6 +1,6 @@
-package woowacourse.kanban.card.model
+package woowacourse.kanban.model
 
-import woowacourse.kanban.card.constant.ERROR_TAG
+private const val ERROR_TAG = "[ERROR]"
 
 @JvmInline
 value class Title(val content: String) {

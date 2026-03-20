@@ -22,14 +22,8 @@ import woowacourse.kanban.PRIMARY_SUB_TEXT
 import woowacourse.kanban.STATUS_BG_SELECTED
 import woowacourse.kanban.STATUS_BORDER_SELECTED
 import woowacourse.kanban.STATUS_TEXT_SELECTED
-import woowacourse.kanban.create.model.TaskStatus
-
-val TaskStatus.displayName: String
-    get() = when (this) {
-        TaskStatus.TO_DO -> "To Do"
-        TaskStatus.IN_PROGRESS -> "In Progress"
-        TaskStatus.DONE -> "Done"
-    }
+import woowacourse.kanban.model.TaskStatus
+import woowacourse.kanban.model.extension.displayName
 
 @Composable
 fun StatusButton(

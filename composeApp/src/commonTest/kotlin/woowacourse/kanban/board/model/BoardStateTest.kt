@@ -2,11 +2,12 @@ package woowacourse.kanban.board.model
 
 import kotlin.test.assertEquals
 import org.junit.Test
-import woowacourse.kanban.card.model.BoardData
-import woowacourse.kanban.card.model.Nickname
-import woowacourse.kanban.card.model.Tags
-import woowacourse.kanban.card.model.Title
-import woowacourse.kanban.create.model.TaskStatus
+import woowacourse.kanban.model.BoardData
+import woowacourse.kanban.model.KanbanTask
+import woowacourse.kanban.model.Nickname
+import woowacourse.kanban.model.Tags
+import woowacourse.kanban.model.TaskStatus
+import woowacourse.kanban.model.Title
 
 class BoardStateTest {
     @Test

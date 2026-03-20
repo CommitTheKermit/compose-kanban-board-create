@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import woowacourse.kanban.PROFILE_BG_COLOR
 import woowacourse.kanban.PROFILE_COLOR
-import woowacourse.kanban.card.model.Nickname
+import woowacourse.kanban.model.Nickname
 
 @Composable
 fun Profile(

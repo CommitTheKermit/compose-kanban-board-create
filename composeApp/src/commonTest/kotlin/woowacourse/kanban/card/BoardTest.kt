@@ -9,10 +9,10 @@ import woowacourse.kanban.card.component.KanbanCard
 import woowacourse.kanban.card.constant.DEFAULT_CONTENT
 import woowacourse.kanban.card.constant.DEFAULT_NAME
 import woowacourse.kanban.card.constant.DEFAULT_TITLE
-import woowacourse.kanban.card.model.BoardData
-import woowacourse.kanban.card.model.Nickname
-import woowacourse.kanban.card.model.Tags
-import woowacourse.kanban.card.model.Title
+import woowacourse.kanban.model.BoardData
+import woowacourse.kanban.model.Nickname
+import woowacourse.kanban.model.Tags
+import woowacourse.kanban.model.Title
 
 @OptIn(ExperimentalTestApi::class)
 class BoardTest {

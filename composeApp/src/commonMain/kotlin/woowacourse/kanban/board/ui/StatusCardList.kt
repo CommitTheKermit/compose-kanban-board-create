@@ -22,45 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import woowacourse.kanban.STATUS_BG_DONE
-import woowacourse.kanban.STATUS_BG_IN_PROGRESS
-import woowacourse.kanban.STATUS_BG_TO_DO
-import woowacourse.kanban.STATUS_LIST_BG_DONE
-import woowacourse.kanban.STATUS_LIST_BG_IN_PROGRESS
-import woowacourse.kanban.STATUS_LIST_BG_TO_DO
-import woowacourse.kanban.STATUS_LIST_BORDER_DONE
-import woowacourse.kanban.STATUS_LIST_BORDER_IN_PROGRESS
-import woowacourse.kanban.STATUS_LIST_BORDER_TO_DO
-import woowacourse.kanban.board.model.KanbanTask
 import woowacourse.kanban.card.component.KanbanCard
-import woowacourse.kanban.create.model.TaskStatus
-
-val TaskStatus.displayName: String
-    get() = when (this) {
-        TaskStatus.TO_DO -> "To Do"
-        TaskStatus.IN_PROGRESS -> "In Progress"
-        TaskStatus.DONE -> "Done"
-    }
-val TaskStatus.titleColor: Color
-    get() = when (this) {
-        TaskStatus.TO_DO -> Color(STATUS_BG_TO_DO)
-        TaskStatus.IN_PROGRESS -> Color(STATUS_BG_IN_PROGRESS)
-        TaskStatus.DONE -> Color(STATUS_BG_DONE)
-    }
-
-val TaskStatus.bgColor: Color
-    get() = when (this) {
-        TaskStatus.TO_DO -> Color(STATUS_LIST_BG_TO_DO)
-        TaskStatus.IN_PROGRESS -> Color(STATUS_LIST_BG_IN_PROGRESS)
-        TaskStatus.DONE -> Color(STATUS_LIST_BG_DONE)
-    }
-
-val TaskStatus.borderColor: Color
-    get() = when (this) {
-        TaskStatus.TO_DO -> Color(STATUS_LIST_BORDER_TO_DO)
-        TaskStatus.IN_PROGRESS -> Color(STATUS_LIST_BORDER_IN_PROGRESS)
-        TaskStatus.DONE -> Color(STATUS_LIST_BORDER_DONE)
-    }
+import woowacourse.kanban.model.KanbanTask
+import woowacourse.kanban.model.TaskStatus
+import woowacourse.kanban.model.extension.bgColor
+import woowacourse.kanban.model.extension.borderColor
+import woowacourse.kanban.model.extension.displayName
+import woowacourse.kanban.model.extension.titleColor
 
 @Composable
 fun StatusCardList(

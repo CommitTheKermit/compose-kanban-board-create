@@ -1,11 +1,12 @@
 package woowacourse.kanban.board.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,7 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import woowacourse.kanban.board.model.BoardState
-import woowacourse.kanban.card.component.KanbanCard
+import woowacourse.kanban.create.model.TaskStatus
 import woowacourse.kanban.create.view.TaskCreateDialog
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -39,12 +40,25 @@ fun KanbanBoard(
             totalTaskCount = state.doneCardList.size + state.todoCardList.size + state.inProgressCardList.size,
             onClick = { showDialog = true },
         )
-        Row {
-            LazyColumn {
-                items(state.todoCardList.size) {
-                    KanbanCard(state.todoCardList[it].data)
-                }
-            }
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.fillMaxWidth(0.75f),
+        ) {
+            StatusCardList(
+                tasks = state.todoCardList,
+                status = TaskStatus.TO_DO,
+                modifier = Modifier.weight(1f),
+            )
+            StatusCardList(
+                tasks = state.inProgressCardList,
+                status = TaskStatus.IN_PROGRESS,
+                modifier = Modifier.weight(1f),
+            )
+            StatusCardList(
+                tasks = state.doneCardList,
+                status = TaskStatus.DONE,
+                modifier = Modifier.weight(1f),
+            )
         }
     }
 

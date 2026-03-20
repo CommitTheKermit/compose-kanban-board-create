@@ -14,6 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import woowacourse.kanban.board.model.KanbanTask
+import woowacourse.kanban.card.model.BoardData
+import woowacourse.kanban.card.model.Nickname
+import woowacourse.kanban.card.model.Tags
+import woowacourse.kanban.card.model.Title
 import woowacourse.kanban.create.model.TaskCreateState
 import woowacourse.kanban.create.model.TaskStatus
 import woowacourse.kanban.create.view.createTextInput.CreateTextInput
@@ -23,7 +28,7 @@ import woowacourse.kanban.create.view.radioSelector.StatusButton
 
 @Composable
 fun TaskCreateDialog(
-    onDismissDialog: () -> Unit,
+    onDismissDialog: (task: KanbanTask?) -> Unit,
     modifier: Modifier,
     assignees: List<String> = listOf(
         "다이노",
@@ -34,7 +39,7 @@ fun TaskCreateDialog(
 
     Dialog(
         onDismissRequest = {
-            onDismissDialog()
+            onDismissDialog(null)
         },
     ) {
         Column(
@@ -103,14 +108,30 @@ fun TaskCreateDialog(
                 ) { index ->
                     CoachButton(
                         name = assignees[index],
-                        isSelected = state.selectedCoachIndex == index,
+                        isSelected = state.selectedAssigneeIndex == index,
                         onClick = { state.onCoachSelect(index) },
                     )
                 }
                 HorizontalDivider()
                 FooterRow(
-                    onCancel = { onDismissDialog() },
-                    onCreate = { state.onCardCreate() },
+                    onCancel = { onDismissDialog(null) },
+                    onCreate = {
+                        val isError = state.onCardCreate()
+                        if (isError.not()) {
+                            val task = KanbanTask(
+                                data = BoardData(
+                                    title = Title(state.titleInputValue),
+                                    content = state.contentInputValue,
+                                    tags = Tags(state.tagInputValue.split(",")),
+                                    nickname = Nickname(
+                                        assignees[state.selectedAssigneeIndex],
+                                    ),
+                                ),
+                                status = TaskStatus.entries[(state.selectedStatusIndex)],
+                            )
+                            onDismissDialog(task)
+                        }
+                    },
                     isCreateError = state.isCreateError,
                 )
             }

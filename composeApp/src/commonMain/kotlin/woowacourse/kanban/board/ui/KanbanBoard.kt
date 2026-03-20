@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Text
@@ -18,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import woowacourse.kanban.board.model.BoardState
+import woowacourse.kanban.card.component.KanbanCard
 import woowacourse.kanban.create.view.TaskCreateDialog
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -30,6 +33,7 @@ fun KanbanBoard(
         )
         .background(Color(0xfff9fafb)),
 ) {
+    var state = remember { BoardState() }
 
     var showDialog by remember { mutableStateOf(false) }
     Column(modifier = modifier) {
@@ -48,11 +52,24 @@ fun KanbanBoard(
                 }
             }
         }
+        Row {
+            LazyColumn {
+                items(state.todoCardList.size) {
+                    KanbanCard(state.todoCardList[it].data)
+                }
+            }
+        }
     }
 
     if (showDialog) {
         TaskCreateDialog(
-            onDismissDialog = { showDialog = false },
+            onDismissDialog = { task ->
+                showDialog = false
+
+                if (task != null) {
+                    state.addCard(task)
+                }
+            },
             modifier = Modifier,
         )
     }

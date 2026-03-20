@@ -122,7 +122,12 @@ fun TaskCreateDialog(
                                 data = BoardData(
                                     title = Title(state.titleInputValue),
                                     content = state.contentInputValue,
-                                    tags = Tags(state.tagInputValue.split(",")),
+                                    tags = Tags(
+                                        if (state.tagInputValue.isNotBlank())
+                                            state.tagInputValue.split(",")
+                                        else
+                                            emptyList(),
+                                    ),
                                     nickname = Nickname(
                                         assignees[state.selectedAssigneeIndex],
                                     ),

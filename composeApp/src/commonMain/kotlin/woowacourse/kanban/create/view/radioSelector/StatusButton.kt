@@ -24,6 +24,13 @@ import woowacourse.kanban.STATUS_BORDER_SELECTED
 import woowacourse.kanban.STATUS_TEXT_SELECTED
 import woowacourse.kanban.create.model.TaskStatus
 
+val TaskStatus.displayName: String
+    get() = when (this) {
+        TaskStatus.TO_DO -> "To Do"
+        TaskStatus.IN_PROGRESS -> "In Progress"
+        TaskStatus.DONE -> "Done"
+    }
+
 @Composable
 fun StatusButton(
     status: TaskStatus,
@@ -58,7 +65,7 @@ fun StatusButton(
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            status.statusDescription,
+            status.displayName,
             fontWeight = FontWeight.W500,
             fontSize = 16.sp,
             modifier = Modifier.padding(vertical = 14.dp),

@@ -22,7 +22,7 @@ class TaskCreateState {
 
     var selectedStatusIndex by mutableIntStateOf(0)
         private set
-    var selectedCoachIndex by mutableIntStateOf(0)
+    var selectedAssigneeIndex by mutableIntStateOf(0)
         private set
 
     fun onTitleChange(input: String) {
@@ -44,7 +44,7 @@ class TaskCreateState {
     }
 
     fun onCoachSelect(index: Int) {
-        selectedCoachIndex = index
+        selectedAssigneeIndex = index
     }
 
     fun onCardCreate() {

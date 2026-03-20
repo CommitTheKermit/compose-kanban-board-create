@@ -1,6 +1,7 @@
 package woowacourse.kanban.create
 
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -19,6 +20,7 @@ import woowacourse.kanban.create.view.radioSelector.StatusButton
 
 @OptIn(ExperimentalTestApi::class)
 class DialogTest {
+    var showDialog = mutableStateOf(false)
 
     @Test
     fun `상태 버튼을 클릭 했을 때 다른 상태 버튼은 선택되지 않아야 한다`() = runComposeUiTest {
@@ -84,7 +86,11 @@ class DialogTest {
     fun `제목 검증 혹은 태그 검증에 실패시 생성 버튼 비활성화 되어야 한다`() = runComposeUiTest {
         // given
         setContent {
-            TaskCreateDialog(modifier = Modifier)
+
+            TaskCreateDialog(
+                onDismissDialog = { showDialog.value = false },
+                modifier = Modifier,
+            )
         }
         // when
         onNodeWithText("태스크 제목을 입력하세요").performTextInput("제목")
@@ -102,7 +108,10 @@ class DialogTest {
         // given
         setContent {
 
-            TaskCreateDialog(modifier = Modifier)
+            TaskCreateDialog(
+                onDismissDialog = { showDialog.value = false },
+                modifier = Modifier,
+            )
         }
 
         // when
@@ -118,7 +127,10 @@ class DialogTest {
     fun `제목 검증 혹은 태그 검증에 실패시 생성 버튼을 누르면 제목과 태그에서 에러 표시가 출력되야 한다`() = runComposeUiTest {
         // given
         setContent {
-            TaskCreateDialog(modifier = Modifier)
+            TaskCreateDialog(
+                onDismissDialog = { showDialog.value = false },
+                modifier = Modifier,
+            )
         }
 
         // when

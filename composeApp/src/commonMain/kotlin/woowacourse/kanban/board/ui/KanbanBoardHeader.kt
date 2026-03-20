@@ -90,7 +90,7 @@ fun KanbanBoardHeader(
 
 @Preview(backgroundColor = 0xfff9fafb)
 @Composable
-fun KanbanBoardHeaderPreview() {
+private fun KanbanBoardHeaderPreview() {
     KanbanBoardHeader(
         progress = 3.0 / 7.0,
         doneTaskCount = 3,

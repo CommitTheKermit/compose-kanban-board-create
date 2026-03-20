@@ -94,7 +94,7 @@ fun StatusCardList(
 
 @Composable
 @Preview
-fun StatusCardListPreview() {
+private fun StatusCardListPreview() {
     StatusCardList(
         tasks = emptyList(),
         status = TaskStatus.TO_DO,

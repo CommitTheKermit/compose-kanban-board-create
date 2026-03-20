@@ -7,6 +7,10 @@ class BoardState {
     val inProgressCardList: MutableList<KanbanTask> = mutableListOf()
     val doneCardList: MutableList<KanbanTask> = mutableListOf()
 
+    fun calculateProgress(tasks: List<KanbanTask>): Double {
+        return tasks.filter { it.status == TaskStatus.DONE }.size.toDouble() / tasks.size.toDouble()
+    }
+
     fun addCard(task: KanbanTask) {
         when (task.status) {
             TaskStatus.TO_DO -> todoCardList.add(task)

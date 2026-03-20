@@ -71,7 +71,7 @@ fun KanbanBoardHeader(
         }
         Spacer(modifier = modifier.height(16.dp))
         LinearProgressIndicator(
-            progress = { 0.5f },
+            progress = { progress.toFloat() },
             modifier = Modifier.fillMaxWidth().height(8.dp),
             color = Color(0xff4f39f6),
             trackColor = Color(0xffe5e7eb),

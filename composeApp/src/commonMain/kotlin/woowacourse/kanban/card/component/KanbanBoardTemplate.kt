@@ -28,7 +28,7 @@ import woowacourse.kanban.card.model.Tags
 import woowacourse.kanban.card.model.Title
 
 @Composable
-fun KanbanBoardTemplate(board: BoardData) {
+fun KanbanCard(board: BoardData) {
     Box(
         modifier = Modifier
             .border(
@@ -98,5 +98,5 @@ class BoardPreviewParameterProvider : PreviewParameterProvider<BoardData> {
 @Preview(showBackground = true)
 @Composable
 private fun BoardScreenView(@PreviewParameter(BoardPreviewParameterProvider::class) board: BoardData) {
-    KanbanBoardTemplate(board)
+    KanbanCard(board)
 }

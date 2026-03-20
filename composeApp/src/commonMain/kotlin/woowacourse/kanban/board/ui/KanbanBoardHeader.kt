@@ -31,7 +31,7 @@ fun KanbanBoardHeader(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val progress: Int = ((doneTaskCount.toDouble() / totalTaskCount.toDouble()) * 100).toInt()
+    val progress: Double = if (totalTaskCount == 0) 0.0 else doneTaskCount.toDouble() / totalTaskCount.toDouble()
     Column(modifier = modifier.padding(horizontal = 24.dp, vertical = 16.dp)) {
         Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
             Column {
@@ -41,7 +41,7 @@ fun KanbanBoardHeader(
                 )
                 Spacer(modifier = Modifier.height(4.5.dp))
                 Text(
-                    "완료율 $progress% ($doneTaskCount/$totalTaskCount)",
+                    "완료율 ${(progress * 100).toInt()}% ($doneTaskCount/$totalTaskCount)",
                     fontWeight = FontWeight.W400,
                     fontSize = 14.sp,
                     color = Color(0xff6a7282),
@@ -75,6 +75,7 @@ fun KanbanBoardHeader(
             modifier = Modifier.fillMaxWidth().height(8.dp),
             color = Color(0xff4f39f6),
             trackColor = Color(0xffe5e7eb),
+            drawStopIndicator = {},
         )
     }
 }

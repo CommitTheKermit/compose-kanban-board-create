@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.runComposeUiTest
 import kotlin.test.Test
 import woowacourse.kanban.create.view.TaskCreateDialog
@@ -32,5 +33,24 @@ class BoardUiTest {
         waitForIdle()
         // then : 생성 다이얼로그가 열려야 한다
         onNodeWithText("태스크 제목을 입력하세요").assertExists()
+    }
+
+    @Test
+    fun `생성 다이얼로그에서 정상적인 값들을 입력 후 생성 버튼을 누르면 칸반 보드 리스트에 표시되어야 한다`() = runComposeUiTest {
+        // given : 태스크 카드 정상 입력값이 주어진다
+        setContent {
+            KanbanBoard()
+        }
+
+        // when : 생성 다이얼로그에서 정상적인 값을 입력 후 생성 버튼을 누를 때
+        onNodeWithText("새 태스크 생성").performClick()
+        waitForIdle()
+        onNodeWithText("태스크 제목을 입력하세요").performTextInput("태스크제목")
+        waitForIdle()
+        onNodeWithText("생성").performClick()
+        waitForIdle()
+
+        // then : 칸반 보드에서 입력된 카드가 보여야 한다
+        onNodeWithText("태스크제목").assertExists()
     }
 }

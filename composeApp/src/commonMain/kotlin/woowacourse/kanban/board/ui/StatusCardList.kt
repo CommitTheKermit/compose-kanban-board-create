@@ -76,7 +76,7 @@ fun StatusCardList(
                         .background(Color.White),
                 ) {
                     Text(
-                        "1",
+                        tasks.size.toString(),
                         color = Color.Black,
                     )
                 }

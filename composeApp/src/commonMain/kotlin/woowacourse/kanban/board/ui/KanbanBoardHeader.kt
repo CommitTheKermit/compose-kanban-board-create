@@ -17,6 +17,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -59,7 +60,7 @@ fun KanbanBoardHeader(
                     disabledContentColor = ButtonDefaults.buttonColors().disabledContentColor,
                 ),
             ) {
-                Row {
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
                     Icon(Icons.Default.Add, contentDescription = "태스크 생성 버튼")
                     Text(
                         "새 태스크 생성",

@@ -1,5 +1,6 @@
 package woowacourse.kanban.card.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,12 +33,14 @@ import woowacourse.kanban.card.model.Title
 fun KanbanCard(board: BoardData) {
     Box(
         modifier = Modifier
+            .width(270.dp)
+            .clip(shape = RoundedCornerShape(15.dp))
+            .background(Color.White)
             .border(
                 width = 1.dp,
                 color = Color(BORDER_COLOR),
                 shape = RoundedCornerShape(15.dp),
             )
-            .width(270.dp)
             .padding(12.dp),
     ) {
         Column {
@@ -95,8 +99,11 @@ class BoardPreviewParameterProvider : PreviewParameterProvider<BoardData> {
     )
 }
 
-@Preview(showBackground = true)
+@Preview()
 @Composable
-private fun BoardScreenView(@PreviewParameter(BoardPreviewParameterProvider::class) board: BoardData) {
+private fun BoardScreenView(
+    @PreviewParameter(BoardPreviewParameterProvider::class)
+    board: BoardData,
+) {
     KanbanCard(board)
 }

@@ -51,8 +51,12 @@ class BoardStateTest {
             ),
         )
 
+        val state = BoardState()
+        tasks.forEach {
+            state.addCard(it)
+        }
         // when : 완료율을 계산하면
-        val result: Double = BoardState().progress
+        val result: Double = state.progress
 
         // then : 완료율은 50%이어야 한다.
         assertEquals(

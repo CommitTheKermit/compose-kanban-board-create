@@ -6,15 +6,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -30,20 +27,17 @@ import woowacourse.kanban.model.TaskStatus
 fun KanbanBoard(modifier: Modifier = Modifier) {
     var state = remember { BoardState() }
 
-    val snackbarHostState = remember { SnackbarHostState() }
-
     LaunchedEffect(state.totalTaskCount) {
         if (state.totalTaskCount > 0) {
-            snackbarHostState.showSnackbar(
+            state.snackbarHostState.showSnackbar(
                 message = "생성",
             )
         }
     }
 
-    var showDialog by remember { mutableStateOf(false) }
     Scaffold(
         snackbarHost = {
-            SnackbarHost(snackbarHostState, modifier = Modifier.offset(y = (-50).dp)) { data ->
+            SnackbarHost(state.snackbarHostState, modifier = Modifier.offset(y = (-50).dp)) { data ->
                 KanbanSnackBar(data)
             }
         },
@@ -54,7 +48,7 @@ fun KanbanBoard(modifier: Modifier = Modifier) {
                 progress = state.progress,
                 doneTaskCount = state.doneCardList.size,
                 totalTaskCount = state.totalTaskCount,
-                onClick = { showDialog = true },
+                onClick = { state.showDialog.value = true },
             )
             Row(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -79,10 +73,10 @@ fun KanbanBoard(modifier: Modifier = Modifier) {
         }
     }
 
-    if (showDialog) {
+    if (state.showDialog.value) {
         TaskCreateDialog(
             onDismissDialog = { task ->
-                showDialog = false
+                state.showDialog.value = false
 
                 if (task != null) {
                     state.addCard(task)

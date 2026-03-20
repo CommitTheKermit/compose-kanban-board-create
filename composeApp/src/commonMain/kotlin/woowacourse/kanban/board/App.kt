@@ -15,6 +15,6 @@ fun App() {
             height = 800.dp,
             width = 1300.dp,
         )
-            .background(Color(0xfff9fafb)),
+            .background(Color.White),
     )
 }

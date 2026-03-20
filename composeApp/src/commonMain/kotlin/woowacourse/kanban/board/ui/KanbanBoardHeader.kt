@@ -38,8 +38,8 @@ fun KanbanBoardHeader(
 ) {
     Column(
         modifier = modifier
-            .padding(horizontal = 24.dp, vertical = 16.dp)
-            .border(color = Color(PRIMARY_BORDER), width = 1.dp),
+            .border(color = Color(PRIMARY_BORDER), width = 1.dp)
+            .padding(horizontal = 24.dp, vertical = 16.dp),
     ) {
         Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
             Column {

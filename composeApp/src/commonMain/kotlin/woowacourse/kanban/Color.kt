@@ -1,57 +1,58 @@
 package woowacourse.kanban
 
-// 보드에 사용된 색상
-const val TAG_COLOR = 0xffF3F4F6
-const val PROFILE_BG_COLOR = 0xFF888888
-const val PROFILE_COLOR = 0xFFFFFFFF
-const val CONTENT_COLOR = 0xff4A5565
+import androidx.compose.ui.graphics.Color
 
-// 보드에 사용된 색상
-// 텍스트 필드 칼럼
-const val TEXT_FIELD_BORDER = 0xFF79747E
-const val TEXT_FIELD_ERROR = 0xFFB3261E
-const val TEXT_FIELD_PLACEHOLDER = 0xFFAAAAAA
-const val TEXT_FIELD_HINT = 0xFF49454F
-const val HEADER_TEXT = 0xFF364153
+object Colors {
+    // 배경색
+    val SurfaceLight = Color(0xFFF3F4F6)
+    val SurfaceDark = Color(0xFF322F35)
+    val OnSurfaceDark = Color(0xFFF5EEF7)
 
-// 생성, 취소 버튼
-const val PRIMARY_TEXT = 0xFF364153
-const val CREATE_BG = 0xFF4F39F6
-const val CREATE_BG_ERROR = 0xFFA7A4BC
+    // 중릭색
+    val NeutralGray = Color(0xFF888888)
+    val OnNeutral = Color.White
 
-// 상태 버튼
-const val PRIMARY_BORDER = 0xFFE5E7EB
-const val STATUS_BORDER_SELECTED = 0xFF1447E6
-const val STATUS_BG_SELECTED = 0xFFEFF6FF
-const val PRIMARY_SUB_TEXT = 0xFF101828
-const val STATUS_TEXT_SELECTED = 0xFF1447E6
+    // 텍스트색상
+    val PrimaryText = Color(0xFF364153)
+    val PrimarySubText = Color(0xFF101828)
+    val ContentText = Color(0xFF4A5565)
 
-// 헤더
-const val CLOSE_ICON_TINT = 0xFF6A7282
+    // 텍스트 필드 색상
+    val TextFieldBorder = Color(0xFF79747E)
+    val TextFieldError = Color(0xFFB3261E)
+    val TextFieldPlaceholder = Color(0xFFAAAAAA)
+    val TextFieldHint = Color(0xFF49454F)
 
-// 코치 버튼
-const val COACH_BORDER_SELECTED = 0xFF615FFF
-const val COACH_BG_SELECTED = 0xFFEEF2FF
-const val COACH_ICON_TINT = 0xFF838383
+    // 액션 색상
+    val ActionPrimary = Color(0xFF4F39F6)
+    val ActionPrimaryDisabled = Color(0xFFA7A4BC)
 
-// 태스크 생성 페이지
-const val COMPLETE_PERCENT = 0xFF6A7282
+    // 아이콘 색상
+    val IconSecondary = Color(0xFF6A7282)
+    val IconTertiary = Color(0xFF838383)
 
-// 스낵바
-const val SNACK_BAR_BG = 0xFF322F35
-const val SNACK_BAR_FONT = 0xFFF5EEF7
+    // 보더
+    val PrimaryBorder = Color(0xFFE5E7EB)
 
-// 칸반 보드 리스트 - 타이틀 색상
-const val STATUS_BG_TO_DO = 0xFF155DFC
-const val STATUS_BG_IN_PROGRESS = 0xFFE17100
-const val STATUS_BG_DONE = 0xFF00A63E
+    // 상태 선택
+    val StatusBorderSelected = Color(0xFF1447E6)
+    val StatusBgSelected = Color(0xFFEFF6FF)
+    val StatusTextSelected = Color(0xFF1447E6)
+    val SecondarySelectedBorder = Color(0xFF615FFF)
+    val SecondarySelectedBg = Color(0xFFEEF2FF)
 
-// 칸반 보드 리스트 - 배경 색상
-const val STATUS_LIST_BG_TO_DO = 0xFFEFF6FF
-const val STATUS_LIST_BG_IN_PROGRESS = 0xFFFFFBEB
-const val STATUS_LIST_BG_DONE = 0xFFF0FDF4
+    // 칸반 보드 리스트 - 타이틀 색상
+    val StatusBgToDo = Color(0xFF155DFC)
+    val StatusBgInProgress = Color(0xFFE17100)
+    val StatusBgDone = Color(0xFF00A63E)
 
-// 칸반 보드 리스트 - 테두리 색상
-const val STATUS_LIST_BORDER_TO_DO = 0xFFBEDBFF
-const val STATUS_LIST_BORDER_IN_PROGRESS = 0xFFFEE685
-const val STATUS_LIST_BORDER_DONE = 0xFFB9F8CF
+    // 칸반 보드 리스트 - 배경 색상
+    val StatusListBgToDo = Color(0xFFEFF6FF)
+    val StatusListBgInProgress = Color(0xFFFFFBEB)
+    val StatusListBgDone = Color(0xFFF0FDF4)
+
+    // 칸반 보드 리스트 - 테두리 색상
+    val StatusListBorderToDo = Color(0xFFBEDBFF)
+    val StatusListBorderInProgress = Color(0xFFFEE685)
+    val StatusListBorderDone = Color(0xFFB9F8CF)
+}

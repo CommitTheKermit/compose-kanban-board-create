@@ -17,15 +17,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import woowacourse.kanban.TEXT_FIELD_BORDER
-import woowacourse.kanban.TEXT_FIELD_ERROR
-import woowacourse.kanban.TEXT_FIELD_PLACEHOLDER
+import woowacourse.kanban.Colors
 
 @Composable
 fun CreateTextField(
@@ -44,7 +41,7 @@ fun CreateTextField(
         modifier = modifier.fillMaxWidth()
             .border(
                 width = if (isError) 2.dp else 1.dp,
-                color = if (isError) Color(TEXT_FIELD_ERROR) else Color(TEXT_FIELD_BORDER),
+                color = if (isError) Colors.TextFieldError else Colors.TextFieldBorder,
                 shape = RoundedCornerShape(4.dp),
             )
             .heightIn(min = height)
@@ -73,7 +70,7 @@ fun CreateTextField(
                                 text = errorPlaceholder,
                                 fontWeight = FontWeight.W400,
                                 fontSize = 16.sp,
-                                color = Color(TEXT_FIELD_ERROR),
+                                color = Colors.TextFieldError,
                             )
                             Box(
                                 modifier = Modifier.size(48.dp),
@@ -82,7 +79,7 @@ fun CreateTextField(
                                 Icon(
                                     imageVector = Icons.Default.Error,
                                     contentDescription = "오류 아이콘",
-                                    tint = Color(TEXT_FIELD_ERROR),
+                                    tint = Colors.TextFieldError,
                                     modifier = Modifier.size(20.dp),
                                 )
                             }
@@ -92,7 +89,7 @@ fun CreateTextField(
                             placeHolder,
                             fontWeight = FontWeight.W400,
                             fontSize = 16.sp,
-                            color = Color(TEXT_FIELD_PLACEHOLDER),
+                            color = Colors.TextFieldPlaceholder,
                         )
                     }
                 } else {

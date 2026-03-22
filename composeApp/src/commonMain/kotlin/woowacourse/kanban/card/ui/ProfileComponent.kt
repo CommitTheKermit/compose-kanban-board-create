@@ -14,11 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import woowacourse.kanban.PROFILE_BG_COLOR
-import woowacourse.kanban.PROFILE_COLOR
+import woowacourse.kanban.Colors
 import woowacourse.kanban.model.Nickname
 
 @Composable
@@ -34,11 +32,11 @@ fun Profile(
         Icon(
             imageVector = Icons.Default.Person,
             contentDescription = null,
-            tint = Color(PROFILE_COLOR),
+            tint = Colors.OnNeutral,
             modifier = Modifier.size(25.dp)
                 .clip(CircleShape)
-                .border(width = 2.dp, color = Color(PROFILE_BG_COLOR))
-                .background(color = Color(PROFILE_BG_COLOR)),
+                .border(width = 2.dp, color = Colors.NeutralGray)
+                .background(color = Colors.NeutralGray),
         )
         Text(
             nickname.nickname,

@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import woowacourse.kanban.PRIMARY_BORDER
+import woowacourse.kanban.Colors
 import woowacourse.kanban.card.constant.DEFAULT_CONTENT
 import woowacourse.kanban.card.constant.DEFAULT_NAME
 import woowacourse.kanban.card.constant.DEFAULT_TITLE
@@ -38,7 +38,7 @@ fun KanbanCard(board: BoardData) {
             .background(Color.White)
             .border(
                 width = 1.dp,
-                color = Color(PRIMARY_BORDER),
+                color = Colors.PrimaryBorder,
                 shape = RoundedCornerShape(15.dp),
             )
             .padding(12.dp),

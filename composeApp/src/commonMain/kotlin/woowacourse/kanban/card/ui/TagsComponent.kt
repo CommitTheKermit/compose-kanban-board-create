@@ -6,9 +6,8 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import woowacourse.kanban.TAG_COLOR
+import woowacourse.kanban.Colors
 import woowacourse.kanban.model.Tags
 
 @Composable
@@ -26,7 +25,7 @@ fun TagsComponent(
                 tag,
                 modifier = Modifier
                     .background(
-                        color = Color(TAG_COLOR),
+                        color = Colors.SurfaceLight,
                         shape = RoundedCornerShape(45.dp),
                     ),
             )

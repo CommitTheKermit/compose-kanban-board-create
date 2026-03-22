@@ -17,17 +17,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import woowacourse.kanban.COACH_BG_SELECTED
-import woowacourse.kanban.COACH_BORDER_SELECTED
-import woowacourse.kanban.COACH_ICON_TINT
-import woowacourse.kanban.PRIMARY_BORDER
-import woowacourse.kanban.PRIMARY_SUB_TEXT
+import woowacourse.kanban.Colors
 import woowacourse.kanban.model.Assignee
 
 @Composable
@@ -45,13 +40,13 @@ fun CoachButton(
                 if (isSelected)
                     Modifier.border(
                         width = 2.dp,
-                        color = Color(COACH_BORDER_SELECTED),
+                        color = Colors.SecondarySelectedBorder,
                         shape = shape,
-                    ).background(color = Color(COACH_BG_SELECTED))
+                    ).background(color = Colors.SecondarySelectedBg)
                 else
                     Modifier.border(
                         width = 2.dp,
-                        color = Color(PRIMARY_BORDER),
+                        color = Colors.PrimaryBorder,
                         shape = shape,
                     ),
             )
@@ -73,14 +68,14 @@ fun CoachButton(
             Icon(
                 imageVector = Icons.Default.AccountCircle,
                 contentDescription = "코치 프로필 아이콘",
-                tint = Color(COACH_ICON_TINT),
+                tint = Colors.IconTertiary,
             )
             Spacer(modifier = Modifier.width(12.dp))
             Text(
                 assignee.nickname.nickname,
                 fontWeight = FontWeight.W500,
                 fontSize = 14.sp,
-                color = Color(PRIMARY_SUB_TEXT),
+                color = Colors.PrimarySubText,
             )
         }
     }

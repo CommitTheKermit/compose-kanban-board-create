@@ -1,15 +1,7 @@
 package woowacourse.kanban.model.extension
 
 import androidx.compose.ui.graphics.Color
-import woowacourse.kanban.STATUS_BG_DONE
-import woowacourse.kanban.STATUS_BG_IN_PROGRESS
-import woowacourse.kanban.STATUS_BG_TO_DO
-import woowacourse.kanban.STATUS_LIST_BG_DONE
-import woowacourse.kanban.STATUS_LIST_BG_IN_PROGRESS
-import woowacourse.kanban.STATUS_LIST_BG_TO_DO
-import woowacourse.kanban.STATUS_LIST_BORDER_DONE
-import woowacourse.kanban.STATUS_LIST_BORDER_IN_PROGRESS
-import woowacourse.kanban.STATUS_LIST_BORDER_TO_DO
+import woowacourse.kanban.Colors
 import woowacourse.kanban.model.TaskStatus
 
 val TaskStatus.displayName: String
@@ -21,21 +13,21 @@ val TaskStatus.displayName: String
 
 val TaskStatus.titleColor: Color
     get() = when (this) {
-        TaskStatus.TO_DO -> Color(STATUS_BG_TO_DO)
-        TaskStatus.IN_PROGRESS -> Color(STATUS_BG_IN_PROGRESS)
-        TaskStatus.DONE -> Color(STATUS_BG_DONE)
+        TaskStatus.TO_DO -> Colors.StatusBgToDo
+        TaskStatus.IN_PROGRESS -> Colors.StatusBgInProgress
+        TaskStatus.DONE -> Colors.StatusBgDone
     }
 
 val TaskStatus.bgColor: Color
     get() = when (this) {
-        TaskStatus.TO_DO -> Color(STATUS_LIST_BG_TO_DO)
-        TaskStatus.IN_PROGRESS -> Color(STATUS_LIST_BG_IN_PROGRESS)
-        TaskStatus.DONE -> Color(STATUS_LIST_BG_DONE)
+        TaskStatus.TO_DO -> Colors.StatusListBgToDo
+        TaskStatus.IN_PROGRESS -> Colors.StatusListBgInProgress
+        TaskStatus.DONE -> Colors.StatusListBgDone
     }
 
 val TaskStatus.borderColor: Color
     get() = when (this) {
-        TaskStatus.TO_DO -> Color(STATUS_LIST_BORDER_TO_DO)
-        TaskStatus.IN_PROGRESS -> Color(STATUS_LIST_BORDER_IN_PROGRESS)
-        TaskStatus.DONE -> Color(STATUS_LIST_BORDER_DONE)
+        TaskStatus.TO_DO -> Colors.StatusListBorderToDo
+        TaskStatus.IN_PROGRESS -> Colors.StatusListBorderInProgress
+        TaskStatus.DONE -> Colors.StatusListBorderDone
     }

@@ -20,13 +20,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import woowacourse.kanban.CREATE_BG
-import woowacourse.kanban.PRIMARY_BORDER
+import woowacourse.kanban.Colors
 
 @Composable
 fun KanbanBoardHeader(
@@ -38,7 +36,7 @@ fun KanbanBoardHeader(
 ) {
     Column(
         modifier = modifier
-            .border(color = Color(PRIMARY_BORDER), width = 1.dp)
+            .border(color = Colors.PrimaryBorder, width = 1.dp)
             .padding(horizontal = 24.dp, vertical = 16.dp),
     ) {
         Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
@@ -52,7 +50,7 @@ fun KanbanBoardHeader(
                     "완료율 ${(progress * 100).toInt()}% ($doneTaskCount/$totalTaskCount)",
                     fontWeight = FontWeight.W400,
                     fontSize = 14.sp,
-                    color = Color(PRIMARY_BORDER),
+                    color = Colors.PrimaryBorder,
                 )
             }
             Button(
@@ -61,7 +59,7 @@ fun KanbanBoardHeader(
                 },
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonColors(
-                    containerColor = Color(CREATE_BG),
+                    containerColor = Colors.ActionPrimary,
                     contentColor = ButtonDefaults.buttonColors().contentColor,
                     disabledContainerColor = ButtonDefaults.buttonColors().disabledContainerColor,
                     disabledContentColor = ButtonDefaults.buttonColors().disabledContentColor,
@@ -81,8 +79,8 @@ fun KanbanBoardHeader(
         LinearProgressIndicator(
             progress = { progress.toFloat() },
             modifier = Modifier.fillMaxWidth().height(8.dp),
-            color = Color(CREATE_BG),
-            trackColor = Color(PRIMARY_BORDER),
+            color = Colors.ActionPrimary,
+            trackColor = Colors.PrimaryBorder,
             drawStopIndicator = {},
         )
     }

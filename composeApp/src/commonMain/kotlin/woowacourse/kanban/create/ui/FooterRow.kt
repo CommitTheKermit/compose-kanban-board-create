@@ -17,9 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import woowacourse.kanban.CREATE_BG
-import woowacourse.kanban.CREATE_BG_ERROR
-import woowacourse.kanban.PRIMARY_TEXT
+import woowacourse.kanban.Colors
 
 @Composable
 fun FooterRow(
@@ -36,7 +34,7 @@ fun FooterRow(
             modifier = Modifier,
             text = "취소",
             backgroundColor = Color.White,
-            textColor = Color(PRIMARY_TEXT),
+            textColor = Colors.PrimaryText,
             onClick = onCancel,
         )
         Spacer(modifier = Modifier.width(12.dp))
@@ -44,7 +42,7 @@ fun FooterRow(
             modifier = Modifier,
             text = "생성",
             textColor = Color.White,
-            backgroundColor = if (isCreateError) Color(CREATE_BG_ERROR) else Color(CREATE_BG),
+            backgroundColor = if (isCreateError) Colors.ActionPrimaryDisabled else Colors.ActionPrimary,
             onClick = onCreate,
             enabled = !isCreateError,
         )

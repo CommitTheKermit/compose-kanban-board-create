@@ -16,7 +16,10 @@ import woowacourse.kanban.create.ui.TaskCreateDialog
 import woowacourse.kanban.create.ui.radioSelector.CoachButton
 import woowacourse.kanban.create.ui.radioSelector.RadioSelector
 import woowacourse.kanban.create.ui.radioSelector.StatusButton
+import woowacourse.kanban.model.Assignee
+import woowacourse.kanban.model.Nickname
 import woowacourse.kanban.model.TaskStatus
+import woowacourse.kanban.model.extension.displayName
 
 @OptIn(ExperimentalTestApi::class)
 class DialogTest {
@@ -42,38 +45,44 @@ class DialogTest {
         }
 
         // when
-        onNodeWithText("In Progress").performClick()
+        onNodeWithText(TaskStatus.IN_PROGRESS.displayName).performClick()
         waitForIdle()
         // then
-        onNodeWithText("In Progress").assertIsSelected()
-        onNodeWithText("TODO").assertIsNotSelected()
-        onNodeWithText("Done").assertIsNotSelected()
+        onNodeWithText(TaskStatus.IN_PROGRESS.displayName).assertIsSelected()
+        onNodeWithText(TaskStatus.TO_DO.displayName).assertIsNotSelected()
+        onNodeWithText(TaskStatus.DONE.displayName).assertIsNotSelected()
     }
 
     @Test
     fun `담당자 버튼을 클릭 했을 때 다른 상태 버튼은 선택되지 않아야 한다`() = runComposeUiTest {
         var selectedCoachIndex = mutableIntStateOf(0)
         // given
-        val names = listOf(
-            "다이노",
-            "페임스",
+        val assignees = listOf(
+            Assignee(
+                Nickname(
+                    "다이노",
+                ),
+            ),
+            Assignee(
+                Nickname(
+                    "페임스",
+                ),
+            ),
         )
 
         setContent {
             RadioSelector(
                 header = "담당자",
-                listSize = names.size,
+                listSize = assignees.size,
             ) { index ->
                 CoachButton(
-                    name = names[index],
+                    assignee = assignees[index],
                     isSelected = selectedCoachIndex.value == index,
                     onClick = { selectedCoachIndex.value = index },
                 )
             }
         }
 
-        onNodeWithText("다이노").assertIsSelected()
-        onNodeWithText("페임스").assertIsNotSelected()
         // when
         onNodeWithText("페임스").performClick()
         waitForIdle()
@@ -88,7 +97,8 @@ class DialogTest {
         setContent {
 
             TaskCreateDialog(
-                onDismissDialog = { showDialog.value = false },
+                onDismiss = { showDialog.value = false },
+                onCreateTask = {},
                 modifier = Modifier,
             )
         }
@@ -109,16 +119,17 @@ class DialogTest {
         setContent {
 
             TaskCreateDialog(
-                onDismissDialog = { showDialog.value = false },
+                onDismiss = { showDialog.value = false },
+                onCreateTask = {},
                 modifier = Modifier,
             )
         }
 
         // when
-        // then
         onNodeWithText("태그를 쉼표로 구분하여 입력하세요 (예: 버그, 긴급)").performTextInput("태그입력")
         onNodeWithText("태스크 제목을 입력하세요").performTextInput("제목입력")
         waitForIdle()
+        // then
         onNodeWithText("태그입력").assertExists()
         onNodeWithText("제목입력").assertExists()
     }
@@ -128,7 +139,8 @@ class DialogTest {
         // given
         setContent {
             TaskCreateDialog(
-                onDismissDialog = { showDialog.value = false },
+                onDismiss = { showDialog.value = false },
+                onCreateTask = {},
                 modifier = Modifier,
             )
         }

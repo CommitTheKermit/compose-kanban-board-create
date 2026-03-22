@@ -28,11 +28,12 @@ import woowacourse.kanban.COACH_BORDER_SELECTED
 import woowacourse.kanban.COACH_ICON_TINT
 import woowacourse.kanban.PRIMARY_BORDER
 import woowacourse.kanban.PRIMARY_SUB_TEXT
+import woowacourse.kanban.model.Assignee
 
 @Composable
 fun CoachButton(
     isSelected: Boolean,
-    name: String,
+    assignee: Assignee,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -76,7 +77,7 @@ fun CoachButton(
             )
             Spacer(modifier = Modifier.width(12.dp))
             Text(
-                name,
+                assignee.nickname.nickname,
                 fontWeight = FontWeight.W500,
                 fontSize = 14.sp,
                 color = Color(PRIMARY_SUB_TEXT),

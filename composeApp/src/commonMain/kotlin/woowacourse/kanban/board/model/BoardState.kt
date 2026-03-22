@@ -12,9 +12,14 @@ import woowacourse.kanban.model.KanbanTask
 import woowacourse.kanban.model.TaskStatus
 
 class BoardState(val scope: CoroutineScope) {
-    val todoCardList: MutableList<KanbanTask> = mutableStateListOf()
-    val inProgressCardList: MutableList<KanbanTask> = mutableStateListOf()
-    val doneCardList: MutableList<KanbanTask> = mutableStateListOf()
+    private val _todoCardList: MutableList<KanbanTask> = mutableStateListOf()
+    val todoCardList: List<KanbanTask> = _todoCardList
+
+    private val _inProgressCardList: MutableList<KanbanTask> = mutableStateListOf()
+    val inProgressCardList: List<KanbanTask> = _inProgressCardList
+
+    private val _doneCardList: MutableList<KanbanTask> = mutableStateListOf()
+    val doneCardList: List<KanbanTask> = _doneCardList
 
     val totalTaskCount by derivedStateOf { todoCardList.size + inProgressCardList.size + doneCardList.size }
     val progress by derivedStateOf {
@@ -26,9 +31,9 @@ class BoardState(val scope: CoroutineScope) {
 
     fun addCard(task: KanbanTask) {
         when (task.status) {
-            TaskStatus.TO_DO -> todoCardList.add(task)
-            TaskStatus.IN_PROGRESS -> inProgressCardList.add(task)
-            TaskStatus.DONE -> doneCardList.add(task)
+            TaskStatus.TO_DO -> _todoCardList.add(task)
+            TaskStatus.IN_PROGRESS -> _inProgressCardList.add(task)
+            TaskStatus.DONE -> _doneCardList.add(task)
         }
 
         scope.launch { snackbarHostState.showSnackbar("새로운 태스크가 추가되었습니다.") }

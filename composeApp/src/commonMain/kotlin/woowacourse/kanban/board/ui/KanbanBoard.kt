@@ -10,8 +10,8 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,15 +23,8 @@ import woowacourse.kanban.model.TaskStatus
 @Composable
 @Preview(heightDp = 800, widthDp = 1300)
 fun KanbanBoard(modifier: Modifier = Modifier) {
-    val state = remember { BoardState() }
-
-    LaunchedEffect(state.totalTaskCount) {
-        if (state.totalTaskCount > 0) {
-            state.snackbarHostState.showSnackbar(
-                message = "생성",
-            )
-        }
-    }
+    val scope = rememberCoroutineScope()
+    val state = remember { BoardState(scope) }
 
     Scaffold(
         snackbarHost = {

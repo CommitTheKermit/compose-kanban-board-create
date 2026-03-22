@@ -43,7 +43,7 @@ fun KanbanSnackBar(
                 .padding(horizontal = 16.dp, vertical = 14.dp),
         ) {
             Text(
-                text = "새로운 태스크가 추가되었습니다.",
+                text = data.visuals.message,
                 color = Color(SNACK_BAR_FONT),
                 fontWeight = FontWeight.W400,
                 fontSize = 14.sp,

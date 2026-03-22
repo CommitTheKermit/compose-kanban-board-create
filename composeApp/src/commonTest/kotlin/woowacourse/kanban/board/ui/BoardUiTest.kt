@@ -11,7 +11,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.runComposeUiTest
 import kotlin.test.Test
-import woowacourse.kanban.create.view.TaskCreateDialog
+import woowacourse.kanban.create.ui.TaskCreateDialog
 
 @OptIn(ExperimentalTestApi::class)
 class BoardUiTest {

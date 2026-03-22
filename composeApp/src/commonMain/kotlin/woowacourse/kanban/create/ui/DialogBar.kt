@@ -1,4 +1,4 @@
-package woowacourse.kanban.create.view
+package woowacourse.kanban.create.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

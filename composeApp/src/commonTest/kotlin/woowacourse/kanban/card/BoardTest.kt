@@ -5,10 +5,10 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.runComposeUiTest
 import kotlin.test.Test
-import woowacourse.kanban.card.component.KanbanCard
 import woowacourse.kanban.card.constant.DEFAULT_CONTENT
 import woowacourse.kanban.card.constant.DEFAULT_NAME
 import woowacourse.kanban.card.constant.DEFAULT_TITLE
+import woowacourse.kanban.card.ui.KanbanCard
 import woowacourse.kanban.model.BoardData
 import woowacourse.kanban.model.Nickname
 import woowacourse.kanban.model.Tags

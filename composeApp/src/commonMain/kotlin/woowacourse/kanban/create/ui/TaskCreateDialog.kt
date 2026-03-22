@@ -1,4 +1,4 @@
-package woowacourse.kanban.create.view
+package woowacourse.kanban.create.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,10 +15,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import woowacourse.kanban.create.model.TaskCreateState
-import woowacourse.kanban.create.view.createTextInput.CreateTextInput
-import woowacourse.kanban.create.view.radioSelector.CoachButton
-import woowacourse.kanban.create.view.radioSelector.RadioSelector
-import woowacourse.kanban.create.view.radioSelector.StatusButton
+import woowacourse.kanban.create.ui.createTextInput.CreateTextInput
+import woowacourse.kanban.create.ui.radioSelector.CoachButton
+import woowacourse.kanban.create.ui.radioSelector.RadioSelector
+import woowacourse.kanban.create.ui.radioSelector.StatusButton
 import woowacourse.kanban.model.BoardData
 import woowacourse.kanban.model.KanbanTask
 import woowacourse.kanban.model.Nickname

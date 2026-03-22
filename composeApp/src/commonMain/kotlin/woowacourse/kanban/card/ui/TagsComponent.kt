@@ -1,4 +1,4 @@
-package woowacourse.kanban.card.component
+package woowacourse.kanban.card.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

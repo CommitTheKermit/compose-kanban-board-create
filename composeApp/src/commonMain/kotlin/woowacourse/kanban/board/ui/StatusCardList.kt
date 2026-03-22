@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import woowacourse.kanban.card.component.KanbanCard
+import woowacourse.kanban.card.ui.KanbanCard
 import woowacourse.kanban.model.KanbanTask
 import woowacourse.kanban.model.TaskStatus
 import woowacourse.kanban.model.extension.bgColor

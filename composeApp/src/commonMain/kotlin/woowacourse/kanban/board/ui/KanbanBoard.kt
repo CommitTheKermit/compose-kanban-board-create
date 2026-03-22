@@ -66,13 +66,8 @@ fun KanbanBoard(modifier: Modifier = Modifier) {
 
     if (state.showDialog.value) {
         TaskCreateDialog(
-            onDismissDialog = { task ->
-                state.showDialog.value = false
-
-                if (task != null) {
-                    state.addCard(task)
-                }
-            },
+            onDismiss = { state.showDialog.value = false },
+            onCreateTask = { task -> state.addCard(task) },
             modifier = Modifier,
         )
     }

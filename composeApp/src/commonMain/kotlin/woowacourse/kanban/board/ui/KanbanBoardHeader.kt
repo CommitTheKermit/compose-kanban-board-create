@@ -75,13 +75,14 @@ fun KanbanBoardHeader(
                 }
             }
         }
-        Spacer(modifier = modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         LinearProgressIndicator(
             progress = { progress.toFloat() },
-            modifier = Modifier.fillMaxWidth().height(8.dp),
             color = Colors.ActionPrimary,
             trackColor = Colors.PrimaryBorder,
             drawStopIndicator = {},
+            gapSize = (-4).dp,
+            modifier = Modifier.fillMaxWidth().height(8.dp),
         )
     }
 }

@@ -22,13 +22,38 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import woowacourse.kanban.Colors
 import woowacourse.kanban.card.ui.KanbanCard
 import woowacourse.kanban.model.KanbanTask
 import woowacourse.kanban.model.TaskStatus
-import woowacourse.kanban.model.extension.bgColor
-import woowacourse.kanban.model.extension.borderColor
-import woowacourse.kanban.model.extension.displayName
-import woowacourse.kanban.model.extension.titleColor
+
+private val TaskStatus.displayName: String
+    get() = when (this) {
+        TaskStatus.TO_DO -> "To Do"
+        TaskStatus.IN_PROGRESS -> "In Progress"
+        TaskStatus.DONE -> "Done"
+    }
+
+private val TaskStatus.titleColor: Color
+    get() = when (this) {
+        TaskStatus.TO_DO -> Colors.StatusBgToDo
+        TaskStatus.IN_PROGRESS -> Colors.StatusBgInProgress
+        TaskStatus.DONE -> Colors.StatusBgDone
+    }
+
+private val TaskStatus.bgColor: Color
+    get() = when (this) {
+        TaskStatus.TO_DO -> Colors.StatusListBgToDo
+        TaskStatus.IN_PROGRESS -> Colors.StatusListBgInProgress
+        TaskStatus.DONE -> Colors.StatusListBgDone
+    }
+
+private val TaskStatus.borderColor: Color
+    get() = when (this) {
+        TaskStatus.TO_DO -> Colors.StatusListBorderToDo
+        TaskStatus.IN_PROGRESS -> Colors.StatusListBorderInProgress
+        TaskStatus.DONE -> Colors.StatusListBorderDone
+    }
 
 @Composable
 fun StatusCardList(

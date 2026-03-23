@@ -18,7 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import woowacourse.kanban.Colors
 import woowacourse.kanban.model.TaskStatus
-import woowacourse.kanban.model.extension.displayName
+
+private val TaskStatus.displayName: String
+    get() = when (this) {
+        TaskStatus.TO_DO -> "To Do"
+        TaskStatus.IN_PROGRESS -> "In Progress"
+        TaskStatus.DONE -> "Done"
+    }
 
 @Composable
 fun StatusButton(

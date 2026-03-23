@@ -20,12 +20,8 @@ import woowacourse.kanban.create.ui.radioSelector.CoachButton
 import woowacourse.kanban.create.ui.radioSelector.RadioSelector
 import woowacourse.kanban.create.ui.radioSelector.StatusButton
 import woowacourse.kanban.model.Assignee
-import woowacourse.kanban.model.BoardData
 import woowacourse.kanban.model.KanbanTask
-import woowacourse.kanban.model.Nickname
-import woowacourse.kanban.model.Tags
 import woowacourse.kanban.model.TaskStatus
-import woowacourse.kanban.model.Title
 
 @Composable
 fun TaskCreateDialog(
@@ -115,23 +111,10 @@ fun TaskCreateDialog(
                 FooterRow(
                     onCancel = { onDismiss() },
                     onCreate = {
-                        val isError = state.onCardCreate()
+                        val isError = state.onCreateValidate()
                         if (isError.not()) {
-                            val task = KanbanTask(
-                                data = BoardData(
-                                    title = Title(state.titleInputValue),
-                                    content = state.contentInputValue,
-                                    tags = Tags(
-                                        if (state.tagInputValue.isNotBlank())
-                                            state.tagInputValue.split(",")
-                                        else
-                                            emptyList(),
-                                    ),
-                                    nickname = Nickname(
-                                        assignees[state.selectedAssigneeIndex].nickname.nickname,
-                                    ),
-                                ),
-                                status = TaskStatus.entries[(state.selectedStatusIndex)],
+                            val task = state.taskCreate(
+                                assignee = assignees[state.selectedAssigneeIndex],
                             )
                             onCreateTask(task)
                             onDismiss()

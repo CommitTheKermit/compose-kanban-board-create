@@ -19,11 +19,16 @@ import woowacourse.kanban.create.ui.radioSelector.StatusButton
 import woowacourse.kanban.model.Assignee
 import woowacourse.kanban.model.Nickname
 import woowacourse.kanban.model.TaskStatus
-import woowacourse.kanban.model.extension.displayName
 
 @OptIn(ExperimentalTestApi::class)
 class DialogTest {
     var showDialog = mutableStateOf(false)
+    private val TaskStatus.displayName: String
+        get() = when (this) {
+            TaskStatus.TO_DO -> "To Do"
+            TaskStatus.IN_PROGRESS -> "In Progress"
+            TaskStatus.DONE -> "Done"
+        }
 
     @Test
     fun `상태 버튼을 클릭 했을 때 다른 상태 버튼은 선택되지 않아야 한다`() = runComposeUiTest {

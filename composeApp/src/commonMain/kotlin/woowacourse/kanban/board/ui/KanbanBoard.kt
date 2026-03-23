@@ -13,21 +13,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlin.collections.listOf
 import woowacourse.kanban.board.model.BoardState
 import woowacourse.kanban.create.ui.TaskCreateDialog
 import woowacourse.kanban.model.Assignee
+import woowacourse.kanban.model.KanbanTask
 import woowacourse.kanban.model.Nickname
 import woowacourse.kanban.model.TaskStatus
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-@Preview(heightDp = 800, widthDp = 1300)
-fun KanbanBoard(modifier: Modifier = Modifier) {
+fun KanbanBoard(
+    modifier: Modifier = Modifier,
+    initTasks: List<KanbanTask> = emptyList(),
+) {
     val scope = rememberCoroutineScope()
-    val state = remember { BoardState(scope) }
+    val state = remember { BoardState(scope, initTasks) }
 
     Scaffold(
         snackbarHost = {
@@ -70,7 +72,7 @@ fun KanbanBoard(modifier: Modifier = Modifier) {
     if (state.showDialog.value) {
         TaskCreateDialog(
             onDismiss = { state.showDialog.value = false },
-            onCreateTask = { task -> state.addCard(task) },
+            onCreateTask = { task -> state.addTask(task) },
             assignees = listOf(
                 Assignee(
                     Nickname(

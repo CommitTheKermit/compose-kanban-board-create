@@ -15,8 +15,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlin.collections.listOf
 import woowacourse.kanban.board.model.BoardState
 import woowacourse.kanban.create.ui.TaskCreateDialog
+import woowacourse.kanban.model.Assignee
+import woowacourse.kanban.model.Nickname
 import woowacourse.kanban.model.TaskStatus
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -33,8 +36,8 @@ fun KanbanBoard(modifier: Modifier = Modifier) {
             }
         },
         modifier = modifier,
-    ) {
-        Column(modifier = Modifier.padding(it)) {
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(paddingValues = innerPadding)) {
             KanbanBoardHeader(
                 progress = state.progress,
                 doneTaskCount = state.doneCardList.size,
@@ -68,7 +71,20 @@ fun KanbanBoard(modifier: Modifier = Modifier) {
         TaskCreateDialog(
             onDismiss = { state.showDialog.value = false },
             onCreateTask = { task -> state.addCard(task) },
+            assignees = listOf(
+                Assignee(
+                    Nickname(
+                        "다이노",
+                    ),
+                ),
+                Assignee(
+                    Nickname(
+                        "페임스",
+                    ),
+                ),
+            ),
             modifier = Modifier,
+
         )
     }
 }

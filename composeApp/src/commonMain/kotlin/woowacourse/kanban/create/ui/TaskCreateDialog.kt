@@ -31,19 +31,8 @@ import woowacourse.kanban.model.Title
 fun TaskCreateDialog(
     onDismiss: () -> Unit,
     onCreateTask: (task: KanbanTask) -> Unit,
+    assignees: List<Assignee>,
     modifier: Modifier,
-    assignees: List<Assignee> = listOf(
-        Assignee(
-            Nickname(
-                "다이노",
-            ),
-        ),
-        Assignee(
-            Nickname(
-                "페임스",
-            ),
-        ),
-    ),
 ) {
     val state = remember { TaskCreateState() }
 

@@ -11,18 +11,18 @@ import woowacourse.kanban.model.KanbanTask
 import woowacourse.kanban.model.TaskStatus
 
 class BoardState(val scope: CoroutineScope, initTasks: List<KanbanTask> = emptyList()) {
-    private val _todoCardList: MutableList<KanbanTask> = mutableStateListOf()
-    val todoCardList: List<KanbanTask> = _todoCardList
 
-    private val _inProgressCardList: MutableList<KanbanTask> = mutableStateListOf()
-    val inProgressCardList: List<KanbanTask> = _inProgressCardList
+    private val totalTasks: MutableList<KanbanTask> = mutableStateListOf()
+    val totalTaskCount by derivedStateOf { totalTasks.size }
 
-    private val _doneCardList: MutableList<KanbanTask> = mutableStateListOf()
-    val doneCardList: List<KanbanTask> = _doneCardList
+    val todoCardList: List<KanbanTask> by derivedStateOf { totalTasks.filter { task -> task.status == TaskStatus.TO_DO } }
 
-    val totalTaskCount by derivedStateOf { todoCardList.size + inProgressCardList.size + doneCardList.size }
+    val inProgressCardList: List<KanbanTask> by derivedStateOf { totalTasks.filter { task -> task.status == TaskStatus.IN_PROGRESS } }
+
+    val doneCardList: List<KanbanTask> by derivedStateOf { totalTasks.filter { task -> task.status == TaskStatus.DONE } }
+
     val progress by derivedStateOf {
-        if (totalTaskCount == 0) 0.0 else doneCardList.size.toDouble() / totalTaskCount.toDouble()
+        if (totalTasks.isEmpty()) 0.0 else doneCardList.size.toDouble() / totalTasks.size.toDouble()
     }
 
     val showDialog = mutableStateOf(false)
@@ -33,11 +33,7 @@ class BoardState(val scope: CoroutineScope, initTasks: List<KanbanTask> = emptyL
     }
 
     fun distributeTask(task: KanbanTask) {
-        when (task.status) {
-            TaskStatus.TO_DO -> _todoCardList.add(task)
-            TaskStatus.IN_PROGRESS -> _inProgressCardList.add(task)
-            TaskStatus.DONE -> _doneCardList.add(task)
-        }
+        totalTasks.add(task)
     }
 
     fun addTask(task: KanbanTask) {
